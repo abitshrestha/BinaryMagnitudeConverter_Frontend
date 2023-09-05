@@ -25,7 +25,7 @@ const Box = () => {
   const [result,setResult]=useState('');
   const generateData=async ()=>{
     try{
-        const response=await axios.get(`http://localhost:2000/generateData`,{
+        const response=await axios.get(`https://binary-magnitude-converter-backend.onrender.com/generateData`,{
           params:{
             character:character,
             from:from,
