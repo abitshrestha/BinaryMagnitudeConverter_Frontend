@@ -4,6 +4,7 @@ import axios from 'axios';
 const Box = () => {
   const [character,setCharacter]=useState('');
   const [error, setError] = useState('');
+  const [isLoading,setLoading]=useState(false);
   const characterHandle=(e)=>{
     const input=e.target.value;
 
@@ -25,7 +26,8 @@ const Box = () => {
   const [result,setResult]=useState('');
   const generateData=async ()=>{
     try{
-        const response=await axios.get(`https://binary-magnitude-converter-backend.onrender.com/generateData`,{
+        setLoading(true);
+        const response=await axios.get(`http://localhost:2000/generateData`,{
           params:{
             character:character,
             from:from,
@@ -36,6 +38,8 @@ const Box = () => {
         setResult(response.data);
     }catch(err){
       console.log(`${err.message}`);
+    }finally{
+      setLoading(false);
     }
   }
   return (
@@ -74,6 +78,7 @@ const Box = () => {
         <label htmlFor="" className="label">Result</label>
         <input type="text" value={result} name="result" id="result" onChange={(e)=>setResult(e.target.value)} readOnly/>
         {error && <p className="error">{error}</p>}
+        {isLoading?<p>Processing...</p>:""}
         <button onClick={generateData}>Convert</button>
       </div>
     </div>
