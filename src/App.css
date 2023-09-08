@@ -87,6 +87,10 @@ button:hover {
 .error {
   color: red;
 }
+.hangon{
+  color:#e8f0fe;
+}
+
 
 /* Media Queries */
 
