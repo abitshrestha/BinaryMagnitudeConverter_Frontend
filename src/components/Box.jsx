@@ -78,7 +78,7 @@ const Box = () => {
         <label htmlFor="" className="label">Result</label>
         <input type="text" value={result} name="result" id="result" onChange={(e)=>setResult(e.target.value)} readOnly/>
         {error && <p className="error">{error}</p>}
-        {isLoading?<p>Processing...</p>:""}
+        {isLoading?<div><p>Processing...</p><br/><p className="hangon">!!Hang On,this may take a while.</p></div>:""}
         <button onClick={generateData}>Convert</button>
       </div>
     </div>
